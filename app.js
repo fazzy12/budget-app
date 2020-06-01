@@ -19,7 +19,7 @@ var budgetController = (function() {
             exp: [],
             inc: []
         },
-        tatals:{
+        totals:{
             exp: 0,
             inc: 0
         }
@@ -96,7 +96,7 @@ var UIController = (function() {
                 <div class="item__delete"><button class="item__delete--btn">
                 <i class="ion-ios-close-outline"></i></button></div></div></div>`;
             }else if(type === 'exp'){
-                element = DOMstrings.incomeContainer;
+                element = DOMstrings.expenseContainer;
 
                 html = `<div class="item clearfix" id="expense-%id%">
                 <divclass="item__description">%description%</divclass=>
@@ -115,6 +115,19 @@ var UIController = (function() {
             //insert the html into the DOM
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
+        },
+
+        //clearing input fields
+        clearFields: function(){
+            var fields, fieldsArr;
+            fields = document.querySelectorAll(DOMstrings.inputDescription + ', '+ DOMstrings.inputValue);
+
+            fieldsArr = Array.prototype.slice.call(fields);
+
+            fieldsArr.forEach(function(current, index, array){
+                current.Value = "";
+            });
+            fieldsArr[0].focus();
         },
         
         getDOMstrings: function() {
@@ -156,7 +169,10 @@ var controller = (function(budgetCtrl, UICtrl) {
         newItem = budgetCtrl.addItem(input.type, input.description, input.value);
 
         //add list item
-        UICtrl.addListItem(newItem, input.type);
+        UICtrl.addListItem(newItem, input.type); 
+
+        //clear feilds
+        UICtrl.clearFields();
 
 
          
