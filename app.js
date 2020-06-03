@@ -16,10 +16,10 @@ var budgetController = (function() {
     var calculateTotal = function(type){
         var sum = 0;
         data.allItems[type].forEach(function(cur){
-            sum +=  cur.Value;
+            sum += cur.value;
         });
         data.totals[type] = sum;
-    }
+    };
 
 
     var data = {
@@ -70,7 +70,7 @@ var budgetController = (function() {
             data.budget = data.totals.inc - data.totals.exp;
 
             //calculate the percentage of income the we spent
-            if (data.totals.inc > 0){
+            if (data.totals.inc > 0) {
                 data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100);
             }else{
                 data.percentage = -1;
@@ -106,8 +106,8 @@ var UIController = (function() {
         incomeContainer: '.income__list',
         expenseContainer: '.expenses__list',
         budgetLabel: '.budget__value',
-        incomeLabel: '.budget__expenses--value',
-        expenceLabel: '.budget__income--value',
+        incomeLabel: '.budget__income--value',
+        expenceLabel: '.budget__expenses--value',
         percentageLabel: '.budget__expenses--percentage'
        
     };
@@ -179,7 +179,7 @@ var UIController = (function() {
         
         getDOMstrings: function() {
             return DOMstrings;
-        }
+        } 
     };
     
 })();
@@ -206,7 +206,7 @@ var controller = (function(budgetCtrl, UICtrl) {
 
     var updateBudget = function(){
         // calculate budget
-        budgetController.calculateBudget();
+        budgetCtrl.calculateBudget();
 
         // return the budget
         var budget = budgetCtrl.getBudget();
