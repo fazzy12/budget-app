@@ -153,11 +153,15 @@ var UIController = (function() {
                 element = DOMstrings.expenseContainer;
 
                 html = `<div class="item clearfix" id="exp-%id%">
-                <divclass="item__description">%description%</divclass=>
-                <div class="right clearfix"><div class="item__value">%value%</div>
-                <div class="item__percentage">21%</div><div class="item__delete">
-                <button class="item__delete--btn"><i class="ion-ios-close-outline">
-                </i></button></div></div></div>`;
+                <div class="item__description">%description%</div>
+                <div class="right clearfix">
+                    <div class="item__value">%value%</div>
+                    <div class="item__percentage">21%</div>
+                    <div class="item__delete">
+                        <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                    </div>
+                </div>
+            </div>`;
             }
            
            
